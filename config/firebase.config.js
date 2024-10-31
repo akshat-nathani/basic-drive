@@ -1,8 +1,10 @@
+// firebase.config.js
 const Firebase = require('firebase-admin');
-const serviceAccount = require('../mendriveproject-firebase-adminsdk-fe8cs-bd151c94fa.json');
+const serviceAccount = require('../mendriveproject-firebase-adminsdk-fe8cs-d37eae78fb.json');
+
 const firebase = Firebase.initializeApp({
-    credential: Firebase.credential.cert(
-        serviceAccount),
+    credential: Firebase.credential.cert(serviceAccount),
     storageBucket: 'mendriveproject.appspot.com',
 });
-module.exports = Firebase;
+
+module.exports = firebase;

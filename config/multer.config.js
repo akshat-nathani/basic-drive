@@ -1,18 +1,16 @@
-const { credential } = require('firebase-admin')
-const multer = require('multer')
-const firebaseStorage = require('multer-firebase-storage')
-const serviceAccount = require('../mendriveproject-firebase-adminsdk-fe8cs-bd151c94fa.json');
+// multer.config.js
 const firebase = require('./firebase.config');
+const multer = require('multer');
+const firebaseStorage = require('multer-firebase-storage');
 
 const firebaseConfig = firebaseStorage({
-    credentials: firebase.credential.cert(
-        serviceAccount),
-    bucketName : 'mendriveproject.appspot.com',
+    credentials: firebase.options.credential, // Access the credential from the initialized firebase app
+    bucketName: firebase.options.storageBucket,
     unique: true,
-})
+});
 
 const upload = multer({
     storage: firebaseConfig,
-})
+});
 
 module.exports = upload;
